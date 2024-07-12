@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GeneralContext } from "../contexts/GeneralContextProvider";
 
-const Record = ({ id, name, price, quantity, cost, index, removeRecord }) => {
-  const addQuantity = () => quantity + 1;
-  const subQuantity = () => quantity - 1;
+const Record = ({ id, name, price, quantity, cost, index }) => {
 
+
+  const { removeRecord, updateRecord, Records } = useContext(GeneralContext);
   return (
     <tr className="group odd:bg-indigo-300 even:bg-cyan-400">
       <td className=" py-3 px-5 text-center">{index + 1}</td>
@@ -15,7 +16,10 @@ const Record = ({ id, name, price, quantity, cost, index, removeRecord }) => {
       </th>
       <td className=" py-3 px-5 text-end">{price}</td>
       <td className=" py-3 px-5 text-end">
-        <button className=" bg-green-100 -translate-x-6 opacity-0 group-hover:translate-x-0  duration-75 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 p-1 rounded">
+        <button
+          onClick={() => quantity > 1 && updateRecord(id, -1)}
+          className=" bg-green-100 -translate-x-6 opacity-0 group-hover:translate-x-0  duration-75 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 p-1 rounded"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -32,7 +36,10 @@ const Record = ({ id, name, price, quantity, cost, index, removeRecord }) => {
           </svg>
         </button>
         <span className=" px-2">{quantity}</span>
-        <button className=" bg-green-100 translate-x-6 opacity-0 group-hover:translate-x-0  duration-75 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 p-1  rounded">
+        <button
+          onClick={() => updateRecord(id, 1)}
+          className=" bg-green-100 translate-x-6 opacity-0 group-hover:translate-x-0  duration-75 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 p-1  rounded"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

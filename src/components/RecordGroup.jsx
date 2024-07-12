@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Record from "./Record";
+import { GeneralContext } from "../contexts/GeneralContextProvider";
 
-const RecordGroup = ({ records,removeRecord }) => {
+const RecordGroup = () => {
+  const {records}= useContext(GeneralContext)
   return (
     <>
       {records.map((record,index) => (
-        <Record  key={record.id} index={index} {...record} removeRecord={removeRecord}/>
+        <Record  key={record.id} index={index} {...record}/>
       ))}
     </>
   );

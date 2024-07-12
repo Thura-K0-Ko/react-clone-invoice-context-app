@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductGroup from "./ProductGroup";
 import ProductCreateForm from "./ProductCreateForm";
+import { GeneralContext } from "../contexts/GeneralContextProvider";
 
-const ProductDrawer = ({ openDrawer,handleDrawer,products,createProduct }) => {
+const ProductDrawer = ({ products, createProduct }) => {
+  const { toggleDrawer, openDrawer } = useContext(GeneralContext);
   return (
     <div
       className={`h-screen fixed bg-white right-0 w-96  shadow-lg p-5 ${
@@ -16,7 +18,10 @@ const ProductDrawer = ({ openDrawer,handleDrawer,products,createProduct }) => {
             Manage Product
           </h3>
         </div>
-        <button onClick={handleDrawer} className=" bg-sky-200 p-3 rounded active:scale-90 ">
+        <button
+          onClick={toggleDrawer}
+          className=" bg-sky-200 p-3 rounded active:scale-90 "
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -33,8 +38,8 @@ const ProductDrawer = ({ openDrawer,handleDrawer,products,createProduct }) => {
           </svg>
         </button>
       </div>
-      <ProductGroup products={products} />
-      <ProductCreateForm createProduct={createProduct} />
+      <ProductGroup />
+      <ProductCreateForm />
     </div>
   );
 };

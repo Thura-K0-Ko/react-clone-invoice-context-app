@@ -1,6 +1,9 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
+import { GeneralContext } from "../contexts/GeneralContextProvider";
 
-const CheckOutForm = ({ products, handleRecord }) => {
+const CheckOutForm = () => {
+  const { products, handleRecord } = useContext(GeneralContext);
+
   const idRef = useRef("");
   const quantityRef = useRef("");
 
@@ -12,12 +15,16 @@ const CheckOutForm = ({ products, handleRecord }) => {
 
     const newRecord = {
       id: Date.now(),
+      productId:currentProduct.id,
       name: currentProduct.name,
       price: currentProduct.price,
       quantity: quantityRef.current.valueAsNumber,
       cost,
     };
     handleRecord(newRecord);
+    idRef.current.value=1;
+    quantityRef.current.value = "";
+   
   };
   return (
     <section className=" mt-5">
