@@ -19,13 +19,13 @@ const GeneralContextProvider = ({ children }) => {
   };
   const [records, setRecord] = useState([]);
   const handleRecord = (newRecord) => {
-    const existedRecord = records.find(
-      (el) => el.productId === newRecord.productId
-    );
+    // const existedRecord = records.find(
+    //   (el) => el.productId === newRecord.productId
+    // );
 
-    if (existedRecord) {
-      return updateRecord(existedRecord.id,newRecord.quantity);
-    }
+    // if (existedRecord) {
+    //   return updateRecord(existedRecord.id,newRecord.quantity);
+    // }
     return setRecord([...records, newRecord]);
   };
 

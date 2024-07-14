@@ -7,7 +7,7 @@ const RecordGroup = () => {
   return (
     <>
       {records.map((record,index) => (
-        <Record  key={record.id} index={index} {...record}/>
+        <Record  key={record.id} index={index} record={record}/>
       ))}
     </>
   );

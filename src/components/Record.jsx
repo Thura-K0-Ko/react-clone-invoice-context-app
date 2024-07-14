@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import { GeneralContext } from "../contexts/GeneralContextProvider";
 
-const Record = ({ id, name, price, quantity, cost, index }) => {
-
-
+const Record = ({ record: { id, name, price, quantity, cost },index }) => {
   const { removeRecord, updateRecord, Records } = useContext(GeneralContext);
   return (
     <tr className="group odd:bg-indigo-300 even:bg-cyan-400">

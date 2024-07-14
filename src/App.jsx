@@ -16,7 +16,10 @@ const App = () => {
       <CheckOutForm />
       <RecordTable />
       <ProductDrawer />
-    
+      <div action="">
+        <input  type="text" name="" id=""  className=" border border-slate-500 p-4" required />
+        <button>submit</button>
+      </div>
       <Footer />
       {/* <TestTable /> */}
     </div>
